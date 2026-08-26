@@ -1,0 +1,24 @@
+# Full Distributed Pipeline Stack (PySpark + Delta Lake + Kafka)
+pyspark>=3.5.0
+delta-spark>=3.2.0
+kafka-python-ng>=2.2.2
+faker>=22.0.0
+pytz>=2024.1
+python-dotenv>=1.0.1
+
+# REST Microservice & ML Serving
+fastapi>=0.111.0
+uvicorn>=0.30.0
+pydantic>=2.7.0
+
+# Dashboard & Geospatial
+streamlit>=1.36.0
+plotly>=5.22.0
+pydeck>=0.9.1
+pandas>=2.2.0
+numpy>=1.26.0
+
+# Testing & Code Quality
+pytest>=8.0.0
+flake8>=7.0.0
+black>=24.0.0

@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: lakehouse
+    database: mobility_lakehouse
+    tables:
+      - name: traffic_silver
+        description: "Validated and deduplicated smart city traffic telemetry stream."
+
+models:
+  - name: stg_traffic
+    description: "Standardized staging view for mobility telemetry with typed casting."
+    columns:
+      - name: vehicle_id
+        description: "Primary identifier for the observed vehicle."
+        tests:
+          - not_null
+      - name: city_zone
+        description: "Urban geographic zone."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['CBD', 'TECHPARK', 'TRAINSTATION', 'AIRPORT', 'HARBOR', 'SUBURB']
+      - name: speed_kmh
+        description: "Recorded vehicle speed in km/h."
+        tests:
+          - not_null
+      - name: congestion_level
+        description: "Urban congestion rating from 1 (Free Flow) to 5 (Gridlock)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]

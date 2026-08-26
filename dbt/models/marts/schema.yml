@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_zones
+    description: "Dimension table representing urban geographic zones and risk tiers."
+    columns:
+      - name: city_zone
+        description: "Primary key for zone."
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_roads
+    description: "Dimension table representing road segments, speed limits, and lane capacities."
+    columns:
+      - name: road_id
+        description: "Primary key for road segment."
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_hourly_traffic_kpis
+    description: "Partitioned fact table containing pre-aggregated hourly KPIs by zone and road."
+    columns:
+      - name: event_date
+        description: "Partition date."
+        tests:
+          - not_null
+      - name: total_vehicle_volume
+        description: "Total count of observed vehicles in this time window."
+        tests:
+          - not_null
